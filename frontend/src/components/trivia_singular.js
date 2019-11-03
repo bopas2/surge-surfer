@@ -13,6 +13,8 @@ export class Trivia_singular extends Component {
                     </div>
                     <div>
                         <p style={title}>Value: {this.props.info.value}$</p>
+                        <p style={title}>Category: {this.props.info.category.title}</p>
+                        <p style={title}>Airdate: {this.props.info.airdate.substring(0,10)}</p>
                     </div>
                 </div>
             </div>

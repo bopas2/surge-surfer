@@ -4,7 +4,6 @@ import Header from './components/header';
 import Background from './resources/background.jpg'
 import './App.css';
 import Error from './components/error';
-import { string } from 'prop-types';
 
 const API_ENDPOINT = "http://localhost:5000/search/?";
 
@@ -54,6 +53,13 @@ class App extends Component {
       let endDate = this.refs.calEnd.value;
       if (date_regex.test(endDate)) {
         url += 'date_end=' + String(endDate) + '&';
+      }
+    }
+
+    if (this.refs.cagEntry) {
+      let cagEntry = this.refs.cagEntry.value;
+      if (cagEntry !== "") {
+        url += 'category=' + String(cagEntry) + '&';
       }
     }
 
@@ -108,7 +114,11 @@ class App extends Component {
                   <option selected value="any">Value: ANY</option>
                   <option value="100">Value: 100</option>
                   <option value="200">Value: 200</option>
+                  <option value="300">Value: 300</option>
                   <option value="400">Value: 400</option>
+                  <option value="500">Value: 500</option>
+                  <option value="600">Value: 600</option>
+                  <option value="800">Value: 800</option>
                   <option value="1000">Value: 1000</option>
                 </select>
               </div>
@@ -186,7 +196,7 @@ const search = {
   paddingRight: '50px',
   paddingTop: '10px',
   paddingBottom: '0px',
-  background: "rgba(100,100,100,.9)",
+  background: "rgba(15,63,118,.9)",
   borderRadius: "10px",
 }
 

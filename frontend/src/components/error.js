@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import PropTypes from 'prop-types'
 
 
 export class Error extends Component {
@@ -36,11 +35,6 @@ const title = {
     paddingRight: '15px',
     paddingTop: '5px',
     fontWeight: 'bold'
-}
-
-const ans = {
-    fontSize: '20px',
-    paddingLeft: '15px',
 }
 
 export default Error

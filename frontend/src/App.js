@@ -122,7 +122,6 @@ class App extends Component {
                   <option value="1000">Value: 1000</option>
                 </select>
               </div>
-              <div style={buttons}>
                 <button 
                     style= {button}
                     type="submit"
@@ -135,7 +134,6 @@ class App extends Component {
                     onClick={this.randomTrivia}>
                     Random Trivia
                 </button>
-              </div>
             </form>
           </div>
           {this.state.trivias.length !== 0 &&

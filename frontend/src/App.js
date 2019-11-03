@@ -5,17 +5,9 @@ import Background from './resources/background.jpg'
 import './App.css';
 import Error from './components/error';
 
-const API_ENDPOINT = "http://localhost:5000/search/?";
+const API_ENDPOINT = "http://3.91.252.180:5000/search/?";
 
 class App extends Component {
-
-  // componentDidMount() {
-  //   $(window).load(function() { // better to use $(document).ready(function(){
-  //     $('button').on('click touchstart', function() {
-  //         $('.Div').slideDown('500');
-  //     });
-  // });
-  // }
 
   state = {
     trivias: []
@@ -133,7 +125,7 @@ class App extends Component {
               <div style={buttons}>
                 <div style={butt}>
                   <button 
-                      style= {button}
+                      style= {batton}
                       type="submit"
                       onClick={this.specificTrivia}
                       onTouchStart={this.specificTrivia}>
@@ -142,7 +134,7 @@ class App extends Component {
                 </div>
                 <div style={butt}>
                   <button 
-                      style= {button}
+                      style= {batton}
                       type="submit" 
                       onClick={this.randomTrivia}
                       onTouchStart={this.randomTrivia}>
@@ -217,7 +209,7 @@ const dropdown = {
   padding: '5px'
 }
 
-const button = {
+const batton = {
   borderRadius: "4px",
   backgroundColor: '#7e98bf',
   padding: '5px',

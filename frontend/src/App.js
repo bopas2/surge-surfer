@@ -214,7 +214,6 @@ const button = {
   fontWeight: 'bold',
   border: 'solid gray 1px',
   cursor: 'pointer',
-  position: 'absolute'
 }
 
 const content = {

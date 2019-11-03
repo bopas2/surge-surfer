@@ -213,7 +213,8 @@ const button = {
   padding: '5px',
   fontWeight: 'bold',
   border: 'solid gray 1px',
-  cursor: 'pointer'
+  cursor: 'pointer',
+  position: 'absolute'
 }
 
 const content = {

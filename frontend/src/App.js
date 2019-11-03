@@ -9,6 +9,14 @@ const API_ENDPOINT = "http://localhost:5000/search/?";
 
 class App extends Component {
 
+  // componentDidMount() {
+  //   $(window).load(function() { // better to use $(document).ready(function(){
+  //     $('button').on('click touchstart', function() {
+  //         $('.Div').slideDown('500');
+  //     });
+  // });
+  // }
+
   state = {
     trivias: []
   }
@@ -127,7 +135,8 @@ class App extends Component {
                   <button 
                       style= {button}
                       type="submit"
-                      onClick={this.specificTrivia}>
+                      onClick={this.specificTrivia}
+                      onTouchStart={this.specificTrivia}>
                         Search
                   </button>
                 </div>
@@ -135,7 +144,8 @@ class App extends Component {
                   <button 
                       style= {button}
                       type="submit" 
-                      onClick={this.randomTrivia}>
+                      onClick={this.randomTrivia}
+                      onTouchStart={this.randomTrivia}>
                       Random Trivia
                   </button>
                 </div>

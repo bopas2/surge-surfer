@@ -122,18 +122,24 @@ class App extends Component {
                   <option value="1000">Value: 1000</option>
                 </select>
               </div>
-                <button 
-                    style= {button}
-                    type="submit"
-                    onmousedown={this.specificTrivia}>
-                      Search
-                </button>
-                <button
-                    style= {button}
-                    type="submit" 
-                    onClick={this.randomTrivia}>
-                    Random Trivia
-                </button>
+              <div style={buttons}>
+                <div style={butt}>
+                  <button 
+                      style= {button}
+                      type="submit"
+                      onClick={this.specificTrivia}>
+                        Search
+                  </button>
+                </div>
+                <div style={butt}>
+                  <button 
+                      style= {button}
+                      type="submit" 
+                      onClick={this.randomTrivia}>
+                      Random Trivia
+                  </button>
+                </div>
+              </div>
             </form>
           </div>
           {this.state.trivias.length !== 0 &&
@@ -165,9 +171,7 @@ const textEntry = {
 
 const buttons = {
   display: "flex",
-  flexDirection: "row",
-  paddingTop: "10px",
-  paddingBottom: "10px"
+  flexDirection: "row"
 }
 
 const drop = {
@@ -181,8 +185,7 @@ const dates_p = {
 }
 
 const butt = {
-  padding: '3px',
-  marginLeft: '10px'
+  padding: '10px',
 }
 
 const search = {
@@ -210,6 +213,7 @@ const button = {
   padding: '5px',
   fontWeight: 'bold',
   border: 'solid gray 1px',
+  cursor: 'pointer'
 }
 
 const content = {

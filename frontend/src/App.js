@@ -127,7 +127,7 @@ class App extends Component {
                   <button 
                       style= {button}
                       type="submit"
-                      onClick={this.specificTrivia}>
+                      onmousedown={this.specificTrivia}>
                         Search
                   </button>
                 </div>

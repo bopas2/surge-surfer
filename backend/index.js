@@ -114,17 +114,26 @@ app.get('/search/:difficulty?/:category?/:date_start?/:date_end?', (req, res) =>
             });
 
             let query = `SELECT * FROM trivia WHERE name LIKE ?`;
-            
             db.all(query, ['%' + String(category) + '%'], (err, row) => {
-                api_endpoint += 'category=' + String(row[Math.floor(Math.random() * row.length)]['id']);
-                if (api_endpoint !== 'http://jservice.io/api/clues/?') {
-                    console.log(api_endpoint)
-                    request(api_endpoint, function (error, response, body) {
-                    if (!error && response.statusCode == 200) {
-                        body = JSON.stringify(shuffle(JSON.parse(body)));
-                        res.json(body);
-                    }});
-                }
+                results = row
+                expected = results.length;
+                ans = [];
+                coun = 0;
+                results.forEach(function(element) {
+                    api_endpoint_temp = api_endpoint + 'category=' + String(element['id']);
+                    if (api_endpoint_temp !== 'http://jservice.io/api/clues/?') {
+                        request(api_endpoint_temp, function (error, response, body) {
+                        if (!error && response.statusCode == 200) {
+                            ans = ans.concat(shuffle(JSON.parse(body)))
+                            coun += 1;
+                            if (coun === expected) {
+                                res.json(JSON.stringify(ans));
+                                console.log(ans)
+                                return;
+                            }
+                        }});
+                    }
+                });
             });
 
             db.close((err) => {

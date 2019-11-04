@@ -13,6 +13,7 @@ class App extends Component {
     trivias: []
   }
 
+  // Fetches a random trivia question
   randomTrivia = (e) => {
     e.preventDefault();
     
@@ -25,12 +26,14 @@ class App extends Component {
       });
   }
 
+  // Fetches a selection of trivia questions based on user specifications
   specificTrivia = (e) => {
     var date_regex = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/
     e.preventDefault();
 
     let url = API_ENDPOINT;
     
+    // Get question value
     if (this.refs.valDropdown) {
       let val = this.refs.valDropdown.value;
       if (String(val) !== "any") {
@@ -38,10 +41,7 @@ class App extends Component {
       }
     }
 
-    if (this.refs.cagEntry) {
-      console.log(this.refs.cagEntry.value);
-    }
-
+    // Get the earliest air date possible
     if (this.refs.calStart) {
       let startDate = String(this.refs.calStart.value);
       if (date_regex.test(startDate)) {
@@ -49,6 +49,7 @@ class App extends Component {
       }
     }
 
+    // Get the latest air date possible
     if (this.refs.calEnd) {
       let endDate = this.refs.calEnd.value;
       if (date_regex.test(endDate)) {
@@ -56,6 +57,7 @@ class App extends Component {
       }
     }
 
+    // Get the trivia category specified
     if (this.refs.cagEntry) {
       let cagEntry = this.refs.cagEntry.value;
       if (cagEntry !== "") {
@@ -65,6 +67,7 @@ class App extends Component {
 
     console.log(url);
 
+    // Get data from backend server and update front-end state
     fetch(url)
       .then(response => response.json())
       .then(data => { 
@@ -75,6 +78,7 @@ class App extends Component {
       });
   }
 
+  // Renders the webapp (header, search form and result section)
   render() {
     return (
       <div className="App" style={screen}>
@@ -155,6 +159,8 @@ class App extends Component {
     )
   }
 }
+
+// STYLING
 
 const offset = {
   paddingBottom: "10px"

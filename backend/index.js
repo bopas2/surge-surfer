@@ -12,6 +12,9 @@ app.use(cors());
 // Define port being used
 const PORT = process.env.PORT || 5000;
 
+// This updates the SQL database being used
+// Because we can't fetch category IDs based on string input, we need a way to efficiently search and find an ID that matches a string category input
+// I am storing all category names and IDs in a database to easily and efficiently lookup likely relevant IDs which is much faster than making 100s of api calls each time we need to look for a category id. 
 app.get('/update_category_database', (req, res) => {
     let db = new sqlite3.Database('./db/database.db', sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE, (err) => {
         if (err) {
@@ -58,12 +61,14 @@ app.get('/update_category_database', (req, res) => {
     }
 });
 
+// Logic for searching the api
 app.get('/search/:difficulty?/:category?/:date_start?/:date_end?', (req, res) => {
     var date_start = req.query.date_start;
     var date_end = req.query.date_end;
     var category = req.query.category;
     var difficulty = req.query.difficulty;
 
+    // if we want a random trivia, we do this
     if (difficulty === undefined && category === undefined && date_end === undefined && date_start === undefined) {
         r = (Math.random() - 1) * 5000
         request('http://jservice.io/api/random/?offset=' + String(r), function (error, response, body) {
@@ -73,13 +78,16 @@ app.get('/search/:difficulty?/:category?/:date_start?/:date_end?', (req, res) =>
     } else {
         var api_endpoint = 'http://jservice.io/api/clues/?'
         difficulty = parseInt(difficulty);
+        // adds question difficulty to query
         if (difficulty !== undefined) {
             if (difficulty === 100 || difficulty === 200 || difficulty === 400 || difficulty === 300 || difficulty === 500 || difficulty === 600 || difficulty === 800 || difficulty === 1000) {
                 api_endpoint += 'value=' + String(difficulty) + '&';
             }
         }
 
+        // API was wonky so additional logic was needed to ensure that correct query was made
         if (date_end !== undefined && date_end != "" && date_start !== undefined && date_start != "") {
+            // getting calendar dates, they are already validated on the front-end
             if (date_end !== undefined && date_end != "") {
                 var fields = date_end.split('/');
                 date_end = String(fields[2]) + '-' + String(fields[1]) + '-' + String(fields[0])
@@ -106,6 +114,7 @@ app.get('/search/:difficulty?/:category?/:date_start?/:date_end?', (req, res) =>
         }
 
         if (category !== undefined && category !== "" && category.length !== 0) {
+            // searches database for relevant ids and returns relevant trivia questions
             let db = new sqlite3.Database('./db/database.db', sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE, (err) => {
                 if (err) {
                   console.log(err.message);
@@ -156,6 +165,7 @@ app.get('/search/:difficulty?/:category?/:date_start?/:date_end?', (req, res) =>
     }
 }); 
 
+// shuffle the trivia questions to ensure that results look like they change even if they dont
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
   

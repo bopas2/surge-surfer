@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 
-
+// A component that displays all the important information for one trivia fact
 export class Trivia_singular extends Component {
     render() {
         return (

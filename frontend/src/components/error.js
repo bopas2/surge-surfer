@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-
+// Component that is shown if there is an error or there is no data to show!
 export class Error extends Component {
     render() {
         return (

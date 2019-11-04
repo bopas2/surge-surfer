@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+
+// Component to hold website name, description and important links
 function Header() {
     return (
         <header style={headerStyle}>

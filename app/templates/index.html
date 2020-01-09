@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block script %}{% endblock %} <!-- 404 error on <script type="text/javascript" src="{{ url_for('static', filename='validation.js') }}"></script> -->
+{% block body %}
+<div class="jumbotron">
+  <h1>AJeopardy</h1>
+  <p class="lead">Flexible service for <i>Jeopardy!</i> fans</p>
+</div>
+
+<!-- display error -->
+
+{% block ifError %}
+    {% if error != "" %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endif %}
+{% endblock ifError %}
+
+<!-- form -->
+
+<form name="questionform" action="/" method="POST">
+    <div class="row">
+        <label for="date">Date Range</label>
+        <div class="input-group mb-3">
+            <input type="date" class="form-control" name="min_date"/>
+            <input type="date" class="form-control" name="max_date"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label for="category">Category (requires numerical ID: find ID <a href="http://jservice.io/search" target="_blank">here</a>)</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" name="category" />
+            </div>
+        </div>
+        <div class="col">
+            <label for="value">Value</label>
+            <select class="custom-select mb-3" name="value">
+                <option selected>Select value</option>
+                <option value="100">100</option>
+                <option value="200">200</option>
+                <option value="300">300</option>
+                <option value="400">400</option>
+                <option value="500">500</option>
+                <option value="600">600</option>
+                <option value="800">800</option>
+                <option value="1000">1000</option>
+            </select>
+        </div>
+    </div>
+
+    <input type="submit" class="btn btn-primary mb-3" name="button" value="Submit">
+    <input type="submit" class="btn btn-primary mb-3" name="button" value="Random">
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Question</th>
+            <th scope="col">Answer</th>
+            <th scope="col">Category</th>
+            <th scope="col">Value</th>
+            <th scope="col">Airdate</th>
+        </tr>
+    </thead>
+</table>
+
+{% endblock body %}

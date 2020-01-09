@@ -3,7 +3,7 @@
 {% block script %}{% endblock %} <!-- 404 error on <script type="text/javascript" src="{{ url_for('static', filename='validation.js') }}"></script> -->
 {% block body %}
 <div class="jumbotron">
-  <h1>AJeopardy</h1>
+  <h1>Surge Surfer</h1>
   <p class="lead">Flexible service for <i>Jeopardy!</i> fans</p>
 </div>
 
@@ -21,13 +21,34 @@
 
 <form name="questionform" action="/" method="POST">
     <div class="row">
+        <div class="col mb-3">
+            <label for="startLocation">Starting Location</label>
+            <input type="text" class="form-control" name="startLocation" />  
+        </div>
+        <div class="col mb-3">
+            <label for="endLocation">Ending Location</label>
+            <input type="text" class="form-control" name="endLocation" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label for="startTime">Earliest Time</label>
+            <input type="time" name="startTime">
+        </div>
+        <div class="col">
+            <label for="endTime">Latest Time</label>
+            <input type="time" name="endTime"> 
+        </div>
+    </div>
+    
+    <!-- <div class="row">
         <label for="date">Date Range</label>
         <div class="input-group mb-3">
             <input type="date" class="form-control" name="min_date"/>
             <input type="date" class="form-control" name="max_date"/>
         </div>
-    </div>
-    <div class="row">
+    </div> -->
+    <!-- <div class="row">
         <div class="col">
             <label for="category">Category (requires numerical ID: find ID <a href="http://jservice.io/search" target="_blank">here</a>)</label>
             <div class="input-group mb-3">
@@ -48,20 +69,17 @@
                 <option value="1000">1000</option>
             </select>
         </div>
-    </div>
+    </div> -->
 
     <input type="submit" class="btn btn-primary mb-3" name="button" value="Submit">
-    <input type="submit" class="btn btn-primary mb-3" name="button" value="Random">
+    <!-- <input type="submit" class="btn btn-primary mb-3" name="button" value="Random"> -->
 </form>
 
 <table class="table">
     <thead>
         <tr>
-            <th scope="col">Question</th>
-            <th scope="col">Answer</th>
-            <th scope="col">Category</th>
-            <th scope="col">Value</th>
-            <th scope="col">Airdate</th>
+            <th scope="col">Time</th>
+            <th scope="col">Predicted Pricing</th>
         </tr>
     </thead>
 </table>

@@ -1,4 +1,4 @@
-# trivia-webapp
+# Uber Surge Prediction Web Application
 
 To run this webapp locally, first install the Node Package Manager.
 

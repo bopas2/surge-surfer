@@ -3,8 +3,8 @@
 {% block script %}{% endblock %} <!-- 404 error on <script type="text/javascript" src="{{ url_for('static', filename='validation.js') }}"></script> -->
 {% block body %}
 <div class="jumbotron">
-  <h1>Surge Surfer</h1>
-  <p class="lead">Flexible service for <i>Jeopardy!</i> fans</p>
+  <img src="https://i.imgur.com/Rf2X2aC.png" style="width: 40%; height: 40%"/>
+  <p class="lead">A service for predicting surge pricing for the lyft ridesharing service!</p>
 </div>
 
 <!-- display error -->
@@ -33,6 +33,7 @@
     <div class="row">
         <div class="col">
             <label for="startTime">Earliest Time</label>
+<<<<<<< HEAD
             <!-- <input type="time" name="startTime"> -->
             <div class="form-group">
                     <div class="input-group date" id="datetimepicker3" data-target-input="nearest">
@@ -68,6 +69,13 @@
                     });
                 });
             </script>
+=======
+            <input type="time" class="form-control" name="startTime">
+        </div>
+        <div class="col">
+            <label for="endTime">Latest Time</label>
+            <input type="time" class="form-control" name="endTime"> 
+>>>>>>> 2fe1cac84407fade4026404e623cd01c3944baaa
         </div>
     </div>
     

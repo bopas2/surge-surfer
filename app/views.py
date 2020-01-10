@@ -17,7 +17,7 @@ sending_phone_number = '+19516665806'
 
 @app.route('/', methods=["GET","POST"])
 def index():
-    error_msg = ""
+    error_msg = " "
     if request.method == "POST":
         if request.form['button'] == 'Submit':
             try:

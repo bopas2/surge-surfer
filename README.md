@@ -1,5 +1,5 @@
 ![Our logo](logo.png) 
-# Uber Surge Prediction Web Application 
+<h1 align="center"> Uber Surge Prediction Web Application </h1>
 
 Surge Surfer uses past data and current traffic information to help you make informed decisions about when to call a rideshare. Our machine learning algorithms trained on millions of Lyft rides, help us predict when ride-sharing platforms will surge their prices, so you can travel for less. 
 

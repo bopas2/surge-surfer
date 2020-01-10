@@ -2,9 +2,7 @@
 {% block title %}Home{% endblock %}
 {% block script %}{% endblock %} <!-- 404 error on <script type="text/javascript" src="{{ url_for('static', filename='validation.js') }}"></script> -->
 {% block body %}
-
 <div class="bg">
-
     {% block ifError %}
         {% if error != "" %}
         <div class="alert alert-danger" role="alert">
@@ -12,11 +10,9 @@
         </div>
         {% endif %}
     {% endblock ifError %}
-
     <div class="infodiv">
         <h1 class="infotxt">Using machine learning algorithms trained on millions of Lyft rides, we predict when ride-sharing platforms will surge their prices, so you can travel for less!</h1>
     </div>
-
     <form style="border-top-left-radius: 15px; border-top-right-radius: 15px;" class="formBox" name="questionform" action="/" method="POST">
         <div style="padding: 2em;"> 
             <div class="row">
@@ -34,7 +30,7 @@
                     <label for="startTime">Earliest Time</label>
                     <div class="form-group">
                         <div class="input-group date" id="datetimepicker3" data-target-input="nearest">
-                                <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker0"/>
+                                <input type="text" name = "datetimepicker3" class="form-control datetimepicker-input" data-target="#datetimepicker0"/>
                                 <div class="input-group-append" data-target="#datetimepicker3" data-toggle="datetimepicker">
                                     <div class="input-group-text"><i class="fa fa-clock-o"></i></div>
                                 </div>
@@ -52,7 +48,7 @@
                     <label for="endTime">Latest Time</label>
                     <div class="form-group">
                         <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-                                <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"/>
+                                <input type="text" name = "datetimepicker1" class="form-control datetimepicker-input" data-target="#datetimepicker1"/>
                                 <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
                                     <div class="input-group-text"><i class="fa fa-clock-o"></i></div>
                                 </div>
@@ -76,12 +72,14 @@
             </div>
         </form>
     </div>
-
     <table class="table formBox">
         <thead>
             <tr>
                 <th scope="col">Time</th>
-                <th scope="col">Predicted Pricing</th>
+                <th scope="col">Predicted Pricing</th>    
+            </tr>
+            <tr>
+                <td> {{ early  + " " +  late }} </td>
             </tr>
         </thead>
     </table>

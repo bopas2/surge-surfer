@@ -23,6 +23,7 @@ sending_phone_number = '+19516665806'
 @app.route('/', methods=["GET","POST"])
 def index():
     error_msg = " "
+
     if request.method == "POST":
         if request.form['button'] == 'Submit':
 
@@ -46,11 +47,11 @@ def index():
                 recieving_phone_number = request.form['phoneNumber']
                 if not start or not end:
                     error_msg = "You must enter your phone number, earliest and latest arrival times, and your start point and final destination."
-                    return render_template("index.html", error = error_msg, early = "", late = "")
+                    return render_template("index.html", ret = [], error = error_msg, early = "", late = "")
             
             except:
                 error_msg = "You must enter your phone number, earliest and latest arrival times, and your start point and final destination."
-                return render_template("index.html", error = error_msg, early = "", late = "")
+                return render_template("index.html", ret = [], error = error_msg, early = "", late = "")
             
             #get current longitude and latitude
             if not start:
@@ -144,8 +145,22 @@ def index():
                         surge_pred.append(0)
                 return surge_pred
 
-            print(predict(day, mins_interval))
-            #print("Leave between " + early_departure + " and " + late_departure)
+            preds=predict(day, mins_interval)
+            print(preds)
+
+            tup_data = list(zip(mins_interval, time_interval))
+            tup_data.sort(key = lambda x: (x[1], x[0]))
+
+
+            try:
+                ret = tup_data[0:3]
+            except:
+                ret = tup_data
+
+            ret = [time for surge, time in ret]
+            #ret = [str(dt.datetime.fromtimestamp(num).hour) + ':' + str(dt.datetime.fromtimestamp(num).minute) for num in ret]
+            ret = [time.strftime('%I:%M %p', time.localtime(num)) for num in ret]
+            print(ret)
             try:
                 message = client.messages \
                     .create(
@@ -155,10 +170,10 @@ def index():
                     )
             except:
                 error_msg = "Unable to send text message with details to " + recieving_phone_number
-                return render_template("index.html", error = error_msg, early = early_departure, late = late_departure)
-            return render_template("index.html", error = "", early = early_departure, late = late_departure)
+                return render_template("index.html", ret = [], error = error_msg, early = early_departure, late = late_departure)
+            return render_template("index.html", ret = ret, error = "", early = early_departure, late = late_departure)
             print(message.sid)
         else:
-            return render_template("index.html", error = "", early = "", late = "")
+            return render_template("index.html", ret = [], error = "", early = "", late = "")
 
-    return render_template("index.html", error = "", early = "", late = "")
+    return render_template("index.html", ret = [], error = "", early = "", late = "")

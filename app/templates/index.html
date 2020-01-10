@@ -72,7 +72,7 @@
                     <label for="startLocation">Phone Number</label>
                     <input type="text" class="form-control" name="phoneNumber" />
                 </div>
-                <input type="button" class="btn btn-secondary btn-lg" name="button" value="Submit">
+                <input type="submit" class="btn btn-secondary btn-lg" name="button" value="Submit">
             </div>
         </form>
     </div>
@@ -82,9 +82,11 @@
                 <th scope="col">Time</th>
                 <th scope="col">Predicted Pricing</th>
             </tr>
+            {% for time in ret %}
             <tr>
-                <td> {{ early  + " " +  late }} </td>
+                <td> Leave at {{time}} </td>
             </tr>
+            {% endfor %}
         </thead>
     </table>
 </div>

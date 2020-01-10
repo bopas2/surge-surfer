@@ -31,8 +31,10 @@ def index():
 
                 last = request.form['datetimepicker1']
                 
-                error_msg = "a"
+
                 early = str(dt.date.today()) + " " + first
+                error_msg = "a"
+                
                 earliest = dt.datetime.strptime(early, '%Y-%m-%d %I:%M %p').timestamp()
 
                 error_msg = '1'

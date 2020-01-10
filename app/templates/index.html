@@ -2,6 +2,9 @@
 {% block title %}Home{% endblock %}
 {% block script %}{% endblock %} <!-- 404 error on <script type="text/javascript" src="{{ url_for('static', filename='validation.js') }}"></script> -->
 {% block body %}
+<head>
+  <title> Surge Surfer </title>
+</head>
 <div class="bg">
     {% block ifError %}
         {% if error != "" %}
@@ -14,11 +17,11 @@
         <h1 class="infotxt">Using machine learning algorithms trained on millions of Lyft rides, we predict when ride-sharing platforms will surge their prices, so you can travel for less!</h1>
     </div>
     <form style="border-top-left-radius: 15px; border-top-right-radius: 15px;" class="formBox" name="questionform" action="/" method="POST">
-        <div style="padding: 2em;"> 
+        <div style="padding: 2em;">
             <div class="row">
                 <div class="col mb-3">
                     <label for="startLocation">Starting Location</label>
-                    <input type="text" class="form-control" name="startLocation" placeholder="Enter nothing to use current location"/>
+                    <input type="text" class="form-control" name="startLocation"/>
                 </div>
                 <div class="col mb-3">
                     <label for="endLocation">Ending Location</label>
@@ -27,7 +30,7 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <label for="startTime">Earliest Time</label>
+                    <label for="startTime">Earliest Time of Arrival</label>
                     <div class="form-group">
                         <div class="input-group date" id="datetimepicker3" data-target-input="nearest">
                                 <input type="text" name = "datetimepicker3" class="form-control datetimepicker-input" data-target="#datetimepicker0"/>
@@ -45,7 +48,7 @@
                     </script>
                 </div>
                 <div class="col">
-                    <label for="endTime">Latest Time</label>
+                    <label for="endTime">Latest Time of Arrival</label>
                     <div class="form-group">
                         <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
                                 <input type="text" name = "datetimepicker1" class="form-control datetimepicker-input" data-target="#datetimepicker1"/>
@@ -66,7 +69,7 @@
             <div class="submit">
                 <div class="col mb-3">
                     <label for="startLocation">Phone Number</label>
-                    <input type="text" class="form-control" name="phoneNumber" />  
+                    <input type="text" class="form-control" name="phoneNumber" />
                 </div>
                 <input style="margin-right: 50%;" type="submit" class="btn btn-primary" name="button" value="Submit">
             </div>
@@ -76,7 +79,7 @@
         <thead>
             <tr>
                 <th scope="col">Time</th>
-                <th scope="col">Predicted Pricing</th>    
+                <th scope="col">Predicted Pricing</th>
             </tr>
             <tr>
                 <td> {{ early  + " " +  late }} </td>

@@ -29,7 +29,6 @@ def index():
                 
 
                 first = request.form['datetimepicker3']
-
                 last = request.form['datetimepicker1']
                 
 
@@ -40,6 +39,9 @@ def index():
                 start = request.form['startLocation']
                 end  = request.form['endLocation']
                 recieving_phone_number = request.form['phoneNumber']
+                if not start or not end:
+                    error_msg = "You must enter your phone number, earliest and latest arrival times, and your final destination."
+                    return render_template("index.html", error = error_msg, early = "", late = "")
             
             except:
                 error_msg = "You must enter your phone number, earliest and latest arrival times, and your final destination."

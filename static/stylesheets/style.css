@@ -8,5 +8,28 @@ body {
 }
 
 .formBox {
-    background-color: #C38D9E;
+    background-color: #62a6b3;
+}
+
+.bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.bartxt {
+    font-size: large;
+    color: white;
+}
+
+.infodiv {
+    margin-top: 10em;
+    margin-bottom: 5em;
+}
+
+.infotxt {
+    font-size: x-large;
+    text-align: center;
+    color: white;
+    font-family: 'Montserrat', sans-serif;;
 }

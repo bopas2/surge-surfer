@@ -22,7 +22,9 @@ client = Client(config.ACC_SID, config.AUTH_TOKEN)
 #recieving_phone_number = '+12166780678'
 recieving_phone_number = ''
 sending_phone_number = '+19516665806'
-matplotlib.use('Agg')
+
+matplotlib.use('agg',warn=False, force=True)
+#print "Switched to:",matplotlib.get_backend()
 
 @app.route('/', methods=["GET","POST"])
 def index():

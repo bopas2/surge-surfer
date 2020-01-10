@@ -2,7 +2,6 @@ import numpy as np
 import pandas as pd
 import sklearn
 from sklearn.ensemble import RandomForestClassifier
-import scipy
 
 data = pd.read_csv("data.csv")
 data = data.drop(columns=["Unnamed: 0", "driver_id", "ride_id", "event", "timestamp", "ride_distance", "ride_duration", "hour"])

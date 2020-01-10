@@ -17,13 +17,13 @@ from sklearn.ensemble import RandomForestClassifier
 import seaborn as sns
 
 import matplotlib
-
+import tkinter
 client = Client(config.ACC_SID, config.AUTH_TOKEN)
 #recieving_phone_number = '+12166780678'
 recieving_phone_number = ''
 sending_phone_number = '+19516665806'
 
-matplotlib.use('agg',warn=False, force=True)
+matplotlib.use('agg')
 from matplotlib import pyplot as plt
 
 #print "Switched to:",matplotlib.get_backend()

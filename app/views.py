@@ -14,9 +14,12 @@ sending_phone_number = '+19516665806'
 def index():
     if request.method == "POST":
         if request.form['button'] == 'Submit':
+            earliest = str(request.form['datetimepicker0'])
+            latest = str(request.form['datetimepicker1'])
+
             message = client.messages \
                 .create(
-                    body='hello!',
+                    body=earliest + " " + latest,
                     from_=sending_phone_number,
                     to=recieving_phone_number
                 )

@@ -14,14 +14,19 @@ import math
 import pandas as pd
 import sklearn
 from sklearn.ensemble import RandomForestClassifier
+import seaborn as sns
+import matplotlib.pyplot as plt
+import matplotlib
 
 client = Client(config.ACC_SID, config.AUTH_TOKEN)
 #recieving_phone_number = '+12166780678'
 recieving_phone_number = ''
 sending_phone_number = '+19516665806'
+matplotlib.use('Agg')
 
 @app.route('/', methods=["GET","POST"])
 def index():
+    check = 0
     error_msg = " "
 
     if request.method == "POST":
@@ -47,11 +52,11 @@ def index():
                 recieving_phone_number = request.form['phoneNumber']
                 if not start or not end:
                     error_msg = "You must enter your phone number, earliest and latest arrival times, and your start point and final destination."
-                    return render_template("index.html", ret = [], error = error_msg, early = "", late = "")
+                    return render_template("index.html", ret = [], length = 0, error = error_msg, early = "", late = "")
             
             except:
                 error_msg = "You must enter your phone number, earliest and latest arrival times, and your start point and final destination."
-                return render_template("index.html", ret = [], error = error_msg, early = "", late = "")
+                return render_template("index.html", ret = [], length = 0, error = error_msg, early = "", late = "")
             
             #get current longitude and latitude
             if not start:
@@ -148,16 +153,29 @@ def index():
             preds=predict(day, mins_interval)
             print(preds)
 
-            tup_data = list(zip(mins_interval, time_interval))
+            tup_data = list(zip(time_interval, preds))
             tup_data.sort(key = lambda x: (x[1], x[0]))
-
+            print(tup_data)
 
             try:
                 ret = tup_data[0:3]
             except:
                 ret = tup_data
 
-            ret = [time for surge, time in ret]
+            plt.cla()
+            plt.clf()
+            plt.figure()
+            time_list = [time.strftime('%I:%M %p', time.localtime(num)) for num in time_interval]
+            sns.set(style="dark", rc={"lines.linewidth": 4.5})
+            sns.set_palette("GnBu_d", 3)
+            plt.rcParams["font.family"] = "Helvetica"
+            # Plot the responses for different events and regions
+            ax = sns.lineplot(x=time_list, y=preds) # edit this line with data and vars
+            ax.set_yticks([])
+            ax.set(xlabel='Time', ylabel='Surge', title = "When should you ride?")
+            plt.savefig('static/graph.png')
+            ret = [time for time, surge in ret]
+            print(ret)
             #ret = [str(dt.datetime.fromtimestamp(num).hour) + ':' + str(dt.datetime.fromtimestamp(num).minute) for num in ret]
             ret = [time.strftime('%I:%M %p', time.localtime(num)) for num in ret]
             print(ret)
@@ -170,10 +188,10 @@ def index():
                     )
             except:
                 error_msg = "Unable to send text message with details to " + recieving_phone_number
-                return render_template("index.html", ret = [], error = error_msg, early = early_departure, late = late_departure)
-            return render_template("index.html", ret = ret, error = "", early = early_departure, late = late_departure)
+                return render_template("index.html", ret = [], length = 0, error = error_msg, early = early_departure, late = late_departure)
+            return render_template("index.html", ret = ret, length = len(ret), error = "", early = early_departure, late = late_departure)
             print(message.sid)
         else:
-            return render_template("index.html", ret = [], error = "", early = "", late = "")
+            return render_template("index.html", ret = [], length = 0, error = "", early = "", late = "")
 
-    return render_template("index.html", ret = [], error = "", early = "", late = "")
+    return render_template("index.html", ret = [], length = 0, error = "", early = "", late = "")

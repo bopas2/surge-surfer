@@ -79,15 +79,37 @@
     <table class="table formBox">
         <thead>
             <tr>
-                <th scope="col">Time</th>
+                <th scope="col">Suggested Times</th>
                 <th scope="col">Predicted Pricing</th>
             </tr>
-            {% for time in ret %}
+
+            {% if 0 < length%}
             <tr>
-                <td> Leave at {{time}} </td>
+                <td> Leave at {{ret[0]}} </td>
+                
+                <td rowspan = 3>
+
+                    <img src="../../static/graph.png" alt="Pricing Graph" onerror="this.onerror=null; this.src='logo.png'" height = 300 width = 600/>
+                
             </tr>
-            {% endfor %}
+            {% endif %}
+            
+            {% if 1 < length %}
+            <tr>
+                <td> Leave at {{ret[1]}} </td>
+                
+            </tr>
+            {% endif %}
+
+            {% if 2 < length %}
+            <tr>
+                <td> Leave at {{ret[2]}} </td>
+                
+                
+            </tr>
+            {% endif %}
         </thead>
+
     </table>
 </div>
 {% endblock body %}

@@ -33,10 +33,10 @@ def index():
                 
 
                 early = str(dt.date.today()) + " " + first
-                error_msg = "a"
+                
                 
                 earliest = dt.datetime.strptime(early, '%Y-%m-%d %I:%M %p').timestamp()
-
+                error_msg = "a"
                 error_msg = '1'
                 late = str(dt.date.today()) + " " + last
                 latest = dt.datetime.strptime(late, '%Y-%m-%d %I:%M %p').timestamp()

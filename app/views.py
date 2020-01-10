@@ -16,18 +16,41 @@ sending_phone_number = '+19516665806'
 
 @app.route('/', methods=["GET","POST"])
 def index():
-    print('a')
+    error_msg = ""
     if request.method == "POST":
-        print('a')
         if request.form['button'] == 'Submit':
-            print('a')
-            first = request.form['datetimepicker3']
+            try:
+                earliest = ""
+                latest = ""
+                start = ""
+                end = ""
+                
 
-            last = str(request.form['datetimepicker1'])
+                first = request.form['datetimepicker3']
+                last = request.form['datetimepicker1']
+                print('a')
+                early = str(dt.date.today()) + " " + first
+                earliest = dt.datetime.strptime(early, '%Y-%m-%d %I:%M %p').timestamp()
+
+                late = str(dt.date.today()) + " " + last
+                latest = dt.datetime.strptime(late, '%Y-%m-%d %I:%M %p').timestamp()
+
+                start = request.form['startLocation']
+                print('a')
+                end  = request.form['endLocation']
+            
+            
+            except:
+                error_msg = "You must enter your earliest and latest arrival times and your final destination."
+                return render_template("index.html", error = error_msg, early = "", late = "")
             
             #get current longitude and latitude
-            g = geocoder.ip('me')
-            curr_loc=g.latlng
+            if not start:
+                g = geocoder.ip('me')
+                curr_loc=g.latlng
+                origin_str = str(curr_loc[0]) + "," + str(curr_loc[1])
+            else:
+                origin_str = start
 
             #api key
             key = 'AIzaSyDVZ5-R9dw1EFWuzQ8ofHZmqqb4mHiVQfw'
@@ -35,14 +58,15 @@ def index():
             #url format: url/json?origin=&destination=&arrival=&apikey=
 
             url = 'https://maps.googleapis.com/maps/api/distancematrix/json?'
-            origin_str = str(curr_loc[0]) + "," + str(curr_loc[1])
+            #origin_str = str(curr_loc[0]) + "," + str(curr_loc[1])
 
             url += 'origins=' + origin_str
             #print(url)
 
-            destinations = '13813 Saratoga Vista Ave'
+            #destinations = '13813 Saratoga Vista Ave'
             #destinations = '38.953,-77.2295'
-            destinations = '+'.join(destinations.split(' ')) #convert to url format
+
+            destinations = '+'.join(end.split(' ')) #convert to url format
 
             url += '&destinations=' + destinations 
 
@@ -55,11 +79,7 @@ def index():
             #latest = datetime.strptime(last, "%I:%M %p")
 
             #print(str(datetime.now().year) + " " + str(datetime.now().month) + " " + str(datetime.now().day) + " " + first)
-            early = str(dt.date.today()) + " " + first
-            earliest = dt.datetime.strptime(early, '%Y-%m-%d %I:%M %p').timestamp()
-
-            late = str(dt.date.today()) + " " + last
-            latest = dt.datetime.strptime(late, '%Y-%m-%d %I:%M %p').timestamp()
+            
 
             
 

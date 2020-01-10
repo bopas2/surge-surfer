@@ -13,4 +13,4 @@ Werkzeug==0.16.0
 geocoder==1.38.1
 numpy==1.16.6
 pandas==0.19.2
-scikit-learn==0.22.1
+scikit-learn==0.20.4

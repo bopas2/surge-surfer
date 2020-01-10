@@ -24,7 +24,7 @@ recieving_phone_number = ''
 sending_phone_number = '+19516665806'
 
 matplotlib.use('agg',warn=False, force=True)
-import matplotlib.pyplot as plt
+from matplotlib import pyplot as plt
 
 #print "Switched to:",matplotlib.get_backend()
 

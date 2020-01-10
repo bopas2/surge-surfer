@@ -11,7 +11,8 @@ from datetime import datetime
 import time
 
 client = Client(config.ACC_SID, config.AUTH_TOKEN)
-recieving_phone_number = '+12166780678'
+#recieving_phone_number = '+12166780678'
+recieving_phone_number = ''
 sending_phone_number = '+19516665806'
 
 @app.route('/', methods=["GET","POST"])
@@ -28,7 +29,7 @@ def index():
 
                 first = request.form['datetimepicker3']
                 last = request.form['datetimepicker1']
-                print('a')
+        
                 early = str(dt.date.today()) + " " + first
                 earliest = dt.datetime.strptime(early, '%Y-%m-%d %I:%M %p').timestamp()
 
@@ -36,12 +37,12 @@ def index():
                 latest = dt.datetime.strptime(late, '%Y-%m-%d %I:%M %p').timestamp()
 
                 start = request.form['startLocation']
-                print('a')
                 end  = request.form['endLocation']
-            
+                
+                recieving_phone_number = request.form['phoneNumber']
             
             except:
-                error_msg = "You must enter your earliest and latest arrival times and your final destination."
+                error_msg = "You must enter your phone number, earliest and latest arrival times, and your final destination."
                 return render_template("index.html", error = error_msg, early = "", late = "")
             
             #get current longitude and latitude

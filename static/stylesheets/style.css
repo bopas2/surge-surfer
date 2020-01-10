@@ -1,3 +1,17 @@
-background {
-    background-color: #41b3a3
+body {
+    background-color: #41b3a3;
+}
+
+.titleBox {
+    background-color: #E8A87C;
+    width:max-content;
+}
+
+.formBox {
+    background-color: #C38D9E;
+}
+
+.bar {
+    display: flex;
+    flex-direction: row;
 }

@@ -15,7 +15,7 @@ import pandas as pd
 import sklearn
 from sklearn.ensemble import RandomForestClassifier
 import seaborn as sns
-import matplotlib.pyplot as plt
+
 import matplotlib
 
 client = Client(config.ACC_SID, config.AUTH_TOKEN)
@@ -24,6 +24,8 @@ recieving_phone_number = ''
 sending_phone_number = '+19516665806'
 
 matplotlib.use('agg',warn=False, force=True)
+import matplotlib.pyplot as plt
+
 #print "Switched to:",matplotlib.get_backend()
 
 @app.route('/', methods=["GET","POST"])

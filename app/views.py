@@ -25,9 +25,10 @@ def index():
                 latest = ""
                 start = ""
                 end = ""
-                error_msg = "a"
+                
 
                 first = request.form['datetimepicker3']
+                error_msg = "a"
                 last = request.form['datetimepicker1']
                 
                 early = str(dt.date.today()) + " " + first

@@ -34,8 +34,6 @@ def index():
                 
 
                 early = str(dt.date.today()) + " " + first
-                
-
                 earliest = dt.datetime.strptime(early, '%Y-%m-%d %I:%M %p').timestamp()
                 late = str(dt.date.today()) + " " + last
                 latest = dt.datetime.strptime(late, '%Y-%m-%d %I:%M %p').timestamp()
@@ -96,7 +94,7 @@ def index():
             early_departure = earliest-r.json()['rows'][0]['elements'][0]['duration']['value']
             early_departure = time.strftime('%I:%M %p', time.localtime(early_departure))
 
-
+            print(origin_str)
             r = requests.get(late_url)
             late_departure = latest-r.json()['rows'][0]['elements'][0]['duration']['value']
             late_departure = time.strftime('%I:%M %p', time.localtime(late_departure))

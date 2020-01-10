@@ -22,7 +22,7 @@
             <div class="row">
                 <div class="col mb-3">
                     <label for="startLocation">Starting Location</label>
-                    <input type="text" class="form-control" name="startLocation" />  
+                    <input type="text" class="form-control" name="startLocation" placeholder="Enter nothing to use current location"/>
                 </div>
                 <div class="col mb-3">
                     <label for="endLocation">Ending Location</label>
@@ -51,7 +51,6 @@
                 <div class="col">
                     <label for="endTime">Latest Time</label>
                     <div class="form-group">
-
                         <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
                                 <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"/>
                                 <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
@@ -68,7 +67,13 @@
                     </script>
                 </div>
             </div>
-            <input style="margin-right: 50%;" type="submit" class="btn btn-primary" name="button" value="Submit">
+            <div class="submit">
+                <div class="col mb-3">
+                    <label for="startLocation">Phone Number</label>
+                    <input type="text" class="form-control" name="phoneNumber" />  
+                </div>
+                <input style="margin-right: 50%;" type="submit" class="btn btn-primary" name="button" value="Submit">
+            </div>
         </form>
     </div>
 

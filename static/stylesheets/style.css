@@ -33,3 +33,9 @@ body {
     color: white;
     font-family: 'Montserrat', sans-serif;;
 }
+
+.submit {
+    display: flex; 
+    flex-direction: row; 
+    text-align: space-between;
+}

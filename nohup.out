@@ -1,0 +1,55 @@
+ * Serving Flask app "app" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+ * Running on http://0.0.0.0:50000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 754-181-589
+198.233.229.66 - - [10/Jan/2020 05:49:15] "GET / HTTP/1.1" 200 -
+198.233.229.66 - - [10/Jan/2020 05:49:31] "GET / HTTP/1.1" 200 -
+198.233.229.66 - - [10/Jan/2020 05:49:56] "GET / HTTP/1.1" 200 -
+198.233.229.66 - - [10/Jan/2020 05:49:57] "GET /static/stylesheets/style.css HTTP/1.1" 200 -
+198.233.229.66 - - [10/Jan/2020 05:49:57] "GET /static/logo.png HTTP/1.1" 200 -
+198.233.229.66 - - [10/Jan/2020 05:49:57] "GET /static/stylesheets/taxi.png HTTP/1.1" 200 -
+ * Serving Flask app "app" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+ * Running on http://0.0.0.0:50000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 754-181-589
+166.170.28.28 - - [10/Jan/2020 05:54:11] "GET / HTTP/1.1" 200 -
+166.170.28.28 - - [10/Jan/2020 05:54:11] "GET /static/stylesheets/style.css HTTP/1.1" 200 -
+166.170.28.28 - - [10/Jan/2020 05:54:11] "GET /static/logo.png HTTP/1.1" 200 -
+166.170.28.28 - - [10/Jan/2020 05:54:12] "GET /static/stylesheets/taxi.png HTTP/1.1" 200 -
+198.233.229.66 - - [10/Jan/2020 05:54:24] "GET / HTTP/1.1" 200 -
+166.170.28.28 - - [10/Jan/2020 05:54:28] "POST / HTTP/1.1" 200 -
+166.170.28.28 - - [10/Jan/2020 05:55:02] "POST / HTTP/1.1" 200 -
+166.170.28.28 - - [10/Jan/2020 05:55:40] "POST / HTTP/1.1" 200 -
+166.170.28.28 - - [10/Jan/2020 05:56:31] "POST / HTTP/1.1" 200 -
+198.233.229.66 - - [10/Jan/2020 05:56:40] "GET / HTTP/1.1" 200 -
+198.233.229.66 - - [10/Jan/2020 05:57:14] "POST / HTTP/1.1" 200 -
+198.233.229.66 - - [10/Jan/2020 05:57:26] "POST / HTTP/1.1" 200 -
+198.233.229.66 - - [10/Jan/2020 05:57:28] "GET / HTTP/1.1" 200 -
+198.233.229.66 - - [10/Jan/2020 05:57:36] "POST / HTTP/1.1" 200 -
+198.233.229.66 - - [10/Jan/2020 05:57:50] "POST / HTTP/1.1" 200 -
+198.233.229.66 - - [10/Jan/2020 05:58:04] "POST / HTTP/1.1" 200 -
+198.233.229.66 - - [10/Jan/2020 05:58:32] "POST / HTTP/1.1" 200 -
+198.233.229.66 - - [10/Jan/2020 05:58:57] "POST / HTTP/1.1" 200 -
+198.233.229.66 - - [10/Jan/2020 05:58:59] "POST / HTTP/1.1" 200 -
+ * Serving Flask app "app" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+ * Running on http://0.0.0.0:50000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 754-181-589
+198.233.229.66 - - [10/Jan/2020 06:03:22] "GET / HTTP/1.1" 200 -
+198.233.229.66 - - [10/Jan/2020 06:03:29] "POST / HTTP/1.1" 200 -
+198.233.229.66 - - [10/Jan/2020 06:03:37] "POST / HTTP/1.1" 200 -

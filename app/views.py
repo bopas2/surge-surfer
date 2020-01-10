@@ -21,37 +21,32 @@ def index():
     if request.method == "POST":
         if request.form['button'] == 'Submit':
 
-            #try:
-            earliest = ""
-            latest = ""
-            start = ""
-            end = ""
+            try:
+                earliest = ""
+                latest = ""
+                start = ""
+                end = ""
+                
+
+                first = request.form['datetimepicker3']
+
+                last = request.form['datetimepicker1']
+                
+
+                early = str(dt.date.today()) + " " + first
+                
+
+                earliest = dt.datetime.strptime(early, '%Y-%m-%d %I:%M %p').timestamp()
+                late = str(dt.date.today()) + " " + last
+                latest = dt.datetime.strptime(late, '%Y-%m-%d %I:%M %p').timestamp()
+                start = request.form['startLocation']
+                end  = request.form['endLocation']
+                recieving_phone_number = request.form['phoneNumber']
             
-
-            first = request.form['datetimepicker3']
-
-            last = request.form['datetimepicker1']
-            
-
-            early = str(dt.date.today()) + " " + first
-            
-
-            #earliest = dt.datetime.strptime(early, '%Y-%m-%d %I:%M %p').timestamp()
-            earliest = dt.datetime.strptime(early, '%Y-%m-%d %I:%M %p').timestamp()
-            error_msg = '1'
-            late = str(dt.date.today()) + " " + last
-            latest = dt.datetime.strptime(late, '%Y-%m-%d %I:%M %p').timestamp()
-            error_msg = '2'
-            start = request.form['startLocation']
-            error_msg = '3'
-            end  = request.form['endLocation']
-            error_msg = '4'
-            recieving_phone_number = request.form['phoneNumber']
-            '''
             except:
-                #error_msg = "You must enter your phone number, earliest and latest arrival times, and your final destination."
+                error_msg = "You must enter your phone number, earliest and latest arrival times, and your final destination."
                 return render_template("index.html", error = error_msg, early = "", late = "")
-            '''
+            
             #get current longitude and latitude
             if not start:
                 g = geocoder.ip('me')

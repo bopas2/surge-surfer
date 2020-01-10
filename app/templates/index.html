@@ -5,8 +5,9 @@
 
 <div class="bg">
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light bar">
-        <p>A service for predicting surge pricing for the lyft ridesharing service!</p>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <img src="../../static/logo.png" style="width: 30%; height: 30%"/>
+        <span>A service for predicting surge pricing for the lyft ridesharing service!</span>
     </nav>
 
     {% block ifError %}
@@ -16,10 +17,6 @@
         </div>
         {% endif %}
     {% endblock ifError %}
-
-    <!-- form -->
-
-    <img src="../../static/logo.png" style="width: 40%; height: 40%"/>
 
     <form class="formBox" name="questionform" action="/" method="POST">
         <div class="row">
@@ -54,9 +51,10 @@
             <div class="col">
                 <label for="endTime">Latest Time</label>
                 <div class="form-group">
-                    <div class="input-group date" id="datetimepicker3" data-target-input="nearest">
+
+                    <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
                             <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"/>
-                            <div class="input-group-append" data-target="#datetimepicker3" data-toggle="datetimepicker">
+                            <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="fa fa-clock-o"></i></div>
                             </div>
                     </div>

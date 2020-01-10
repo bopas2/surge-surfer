@@ -1,5 +1,6 @@
 body {
     background-color: #41b3a3;
+    background-image: "../../static/taxi.png";
 }
 
 .titleBox {
@@ -9,9 +10,4 @@ body {
 
 .formBox {
     background-color: #C38D9E;
-}
-
-.bar {
-    display: flex;
-    flex-direction: row;
 }

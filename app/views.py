@@ -16,12 +16,15 @@ sending_phone_number = '+19516665806'
 
 @app.route('/', methods=["GET","POST"])
 def index():
+    print('a')
     if request.method == "POST":
+        print('a')
         if request.form['button'] == 'Submit':
-
+            print('a')
             first = request.form['datetimepicker3']
-            last = str(request.form['datetimepicker1'])
 
+            last = str(request.form['datetimepicker1'])
+            
             #get current longitude and latitude
             g = geocoder.ip('me')
             curr_loc=g.latlng
@@ -76,6 +79,7 @@ def index():
             late_departure = time.strftime('%I:%M %p', time.localtime(late_departure))
             
             #print("Leave between " + early_departure + " and " + late_departure)
+            
             message = client.messages \
                 .create(
                     body= "leave after " + early_departure + " by " + late_departure,
@@ -84,4 +88,5 @@ def index():
                 )
 
             print(message.sid)
+
     return render_template("index.html", error = "")

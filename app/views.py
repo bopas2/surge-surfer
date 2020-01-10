@@ -40,11 +40,11 @@ def index():
                 end  = request.form['endLocation']
                 recieving_phone_number = request.form['phoneNumber']
                 if not start or not end:
-                    error_msg = "You must enter your phone number, earliest and latest arrival times, and your final destination."
+                    error_msg = "You must enter your phone number, earliest and latest arrival times, and your start point and final destination."
                     return render_template("index.html", error = error_msg, early = "", late = "")
             
             except:
-                error_msg = "You must enter your phone number, earliest and latest arrival times, and your final destination."
+                error_msg = "You must enter your phone number, earliest and latest arrival times, and your start point and final destination."
                 return render_template("index.html", error = error_msg, early = "", late = "")
             
             #get current longitude and latitude
@@ -98,13 +98,16 @@ def index():
             late_departure = time.strftime('%I:%M %p', time.localtime(late_departure))
             
             #print("Leave between " + early_departure + " and " + late_departure)
-            
-            message = client.messages \
-                .create(
-                    body= "leave after " + early_departure + " by " + late_departure,
-                    from_=sending_phone_number,
-                    to=recieving_phone_number
-                )
+            try:
+                message = client.messages \
+                    .create(
+                        body= "leave after " + early_departure + " by " + late_departure,
+                        from_=sending_phone_number,
+                        to=recieving_phone_number
+                    )
+            except:
+                error_msg = "Unable to send text message with details to " + recieving_phone_number
+                return render_template("index.html", error = error_msg, early = early_departure, late = late_departure)
             return render_template("index.html", error = "", early = early_departure, late = late_departure)
             print(message.sid)
         else:

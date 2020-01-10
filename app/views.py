@@ -86,7 +86,9 @@ def index():
                     from_=sending_phone_number,
                     to=recieving_phone_number
                 )
-
+            return render_template("index.html", error = "", early = early_departure, late = late_departure)
             print(message.sid)
+        else:
+            return render_template("index.html", error = "", early = "", late = "")
 
-    return render_template("index.html", error = "")
+    return render_template("index.html", error = "", early = "", late = "")

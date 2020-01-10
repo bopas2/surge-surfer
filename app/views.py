@@ -84,8 +84,9 @@ def index():
             early_url = url + "&arrival_time=" + str(earliest) + '&key=' + key
             late_url = url + "&arrival_time=" + str(latest) + '&key=' + key
             print("or: " + origin_str)
-            
+
             r = requests.get(early_url)
+            print(r.json())
             early_departure = earliest-r.json()['rows'][0]['elements'][0]['duration']['value']
             early_departure = time.strftime('%I:%M %p', time.localtime(early_departure))
 

@@ -125,7 +125,7 @@ def index():
             model.fit(X, y)
 
             data2 = data.loc[data["ride_prime_time"] > 0]
-            X2 = data2.drop(columns=["ride_prime_time"])
+            X2 = data2.drop(labels=["ride_prime_time"], axis=1)
             y2 = data2["ride_prime_time"]
 
             model2 = RandomForestClassifier(class_weight='balanced', min_samples_leaf=10, min_samples_split=148, random_state=0)

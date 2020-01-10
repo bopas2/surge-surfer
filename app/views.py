@@ -117,8 +117,8 @@ def index():
             day = dt.datetime.fromtimestamp(rounded_start).day
 
             data = pd.read_csv("data.csv")
-            data = data.drop(columns=["Unnamed: 0", "driver_id", "ride_id", "event", "timestamp", "ride_distance", "ride_duration", "hour"])
-            X = data.drop(columns=["ride_prime_time"])
+            data = data.drop(labels=["Unnamed: 0", "driver_id", "ride_id", "event", "timestamp", "ride_distance", "ride_duration", "hour"])
+            X = data.drop(labels=["ride_prime_time"])
             y = data["ride_prime_time"].astype(bool).astype(int)
 
             model = RandomForestClassifier(class_weight={0: 1, 1: 1.1}, min_samples_split=480, random_state=0)

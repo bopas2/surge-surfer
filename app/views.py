@@ -37,7 +37,7 @@ def index():
             
 
             #earliest = dt.datetime.strptime(early, '%Y-%m-%d %I:%M %p').timestamp()
-            earliest = dt.datetime.strptime(early, '%Y-%m-%d %I:%M %p')
+            earliest = dt.datetime.strptime(early, '%Y-%m-%d %I:%M %p').timestamp()
             error_msg = '1'
             late = str(dt.date.today()) + " " + last
             latest = dt.datetime.strptime(late, '%Y-%m-%d %I:%M %p').timestamp()
